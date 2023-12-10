@@ -1,4 +1,4 @@
-.navbar__background {
+.navbar {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,25 +9,24 @@
   @include mobile {
     height: 11rem;
   }
-}
 
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 69.1%;
-  height: 5rem;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 69.1%;
+    height: 5rem;
 
-  @include pad {
-    width: 90%;
+    @include pad {
+      width: 90%;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
   }
-
-  @include mobile {
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-  }
-
   &__section-left {
     display: flex;
     justify-content: start;
@@ -112,7 +111,7 @@
   }
 }
 
-.section-home {
+.section-hero {
   display: inline-flex;
   width: 100vw;
   height: auto;
@@ -163,6 +162,7 @@
   &__text {
     text-align: end;
     font-size: 2.25rem;
+    font-family: $nato-sans-tc;
     color: $text;
     @include mobile {
       font-size: 1rem;
@@ -171,6 +171,7 @@
   &__capture {
     text-align: end;
     font-size: 4rem;
+    font-weight: bold;
     color: $text;
     @include mobile {
       font-size: 1.5rem;
@@ -192,7 +193,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 100vw;
   height: 100%;
   background-color: $bg-color-light-pink;
@@ -202,6 +202,7 @@
   &__capture {
     text-align: center;
     font-size: 4rem;
+    font-weight: bold;
     color: $text;
     @include mobile {
       font-size: 1.5rem;
@@ -246,6 +247,7 @@
   }
   &__subtitle {
     font-size: 1.5rem;
+    font-weight: bold;
     color: $text;
     margin-top: 1.5rem;
   }
@@ -271,6 +273,7 @@
   &__capture {
     text-align: center;
     font-size: 3rem;
+    font-weight: bold;
     color: $text;
     margin-top: 5rem;
 
@@ -294,17 +297,17 @@
   }
   &__card-frame {
     width: (100% / 3);
-    margin: 0 0.5rem;
+    padding: 0 0.5rem;
 
     @include pad {
       width: 50%;
-      @include pad {
-        margin-top: 1.5rem;
-      }
+      margin: 1.5rem 0;
+      padding: 0;
     }
 
     @include mobile {
       width: 100%;
+      padding: 0;
     }
   }
   &__card {
@@ -320,8 +323,151 @@
   }
   &__text {
     font-size: 3rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-style: italic;
     color: $primary;
     margin-top: 1.5rem;
+    word-wrap: break-word;
+    @include pad {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1129px) {
+  .section-classic__text {
+    font-size: 2rem;
+  }
+}
+
+.section-collab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  &__background-pic {
+    width: 100vw;
+    height: auto;
+    position: relative;
+    z-index: 15;
+    &--md {
+      width: 100vw;
+      height: auto;
+      position: relative;
+      z-index: 15;
+      display: none;
+    }
+    &--sm {
+      width: 100vw;
+      height: auto;
+      position: relative;
+      z-index: 15;
+      display: none;
+    }
+  }
+  @include pad {
+    &__background-pic {
+      width: 100vw;
+      height: auto;
+      position: relative;
+      z-index: 15;
+      display: none;
+      &--md {
+        display: block;
+        width: 100vw;
+        height: auto;
+        position: relative;
+        z-index: 15;
+      }
+      &--sm {
+        width: 100vw;
+        height: auto;
+        position: relative;
+        z-index: 15;
+        display: none;
+      }
+    }
+  }
+  @include mobile {
+    &__background-pic {
+      width: 100vw;
+      height: auto;
+      position: relative;
+      z-index: 15;
+      display: none;
+      &--md {
+        width: 100vw;
+        height: auto;
+        position: relative;
+        z-index: 15;
+        display: none;
+      }
+      &--sm {
+        display: block;
+        width: 100vw;
+        height: auto;
+        position: relative;
+        z-index: 15;
+      }
+    }
+  }
+  &__container {
+    @include container;
+    position: absolute;
+    z-index: 30;
+  }
+  &__caption {
+    font-size: 3rem;
+    color: #fff;
+    font-weight: bold;
+  }
+  &__cards {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.5rem;
+    @include pad {
+      flex-wrap: wrap;
+    }
+  }
+  &__card-frame {
+    width: 50%;
+
+    @include pad {
+      width: 50%;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+  &__img {
+    width: 100%;
+  }
+  &__text {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+
+    font-size: 3rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: $primary;
+    text-align: center;
+
     word-wrap: break-word;
     @include pad {
       margin-top: 0.5rem;
