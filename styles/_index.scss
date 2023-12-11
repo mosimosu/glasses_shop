@@ -211,7 +211,7 @@
 
   &__cards {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: start;
     margin-top: 1.5rem;
     @include pad {
@@ -221,7 +221,7 @@
 
   &__card-frame {
     width: 25%;
-    padding: 0 0.25rem;
+    padding: 0 0.5rem;
 
     @include pad {
       width: 50%;
@@ -275,10 +275,11 @@
     font-size: 3rem;
     font-weight: bold;
     color: $text;
-    margin-top: 5rem;
+    margin-top: 2.5rem;
 
     @include mobile {
       font-size: 1.5rem;
+      margin-top: 0rem;
     }
   }
   &__cards {
@@ -287,12 +288,14 @@
     align-items: center;
     width: 100%;
     margin-top: 3rem;
+    gap: 1.5rem;
     @include pad {
       flex-wrap: wrap;
+      flex-direction: column;
     }
 
-    @include pad {
-      flex-direction: column;
+    @include mobile {
+      margin-top: 0;
     }
   }
   &__card-frame {
@@ -332,16 +335,14 @@
     @include pad {
       margin-top: 0.5rem;
     }
-  }
-}
-
-@media screen and (max-width: 1129px) {
-  .section-classic__text {
-    font-size: 2rem;
+    @include mobile {
+      font-size: 3rem;
+    }
   }
 }
 
 .section-collab {
+  @include section;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -352,26 +353,14 @@
     position: relative;
     z-index: 15;
     &--md {
-      width: 100vw;
-      height: auto;
-      position: relative;
-      z-index: 15;
       display: none;
     }
     &--sm {
-      width: 100vw;
-      height: auto;
-      position: relative;
-      z-index: 15;
       display: none;
     }
   }
   @include pad {
     &__background-pic {
-      width: 100vw;
-      height: auto;
-      position: relative;
-      z-index: 15;
       display: none;
       &--md {
         display: block;
@@ -381,26 +370,14 @@
         z-index: 15;
       }
       &--sm {
-        width: 100vw;
-        height: auto;
-        position: relative;
-        z-index: 15;
         display: none;
       }
     }
   }
   @include mobile {
     &__background-pic {
-      width: 100vw;
-      height: auto;
-      position: relative;
-      z-index: 15;
       display: none;
       &--md {
-        width: 100vw;
-        height: auto;
-        position: relative;
-        z-index: 15;
         display: none;
       }
       &--sm {
@@ -416,11 +393,19 @@
     @include container;
     position: absolute;
     z-index: 30;
+
+    @include mobile {
+      height: auto;
+    }
   }
   &__caption {
     font-size: 3rem;
     color: #fff;
     font-weight: bold;
+
+    @include mobile {
+      font-size: 1.5rem;
+    }
   }
   &__cards {
     display: flex;
@@ -431,46 +416,154 @@
     @include pad {
       flex-wrap: wrap;
     }
+    @include mobile {
+      height: 100%;
+    }
   }
   &__card-frame {
-    width: 50%;
+    max-width: 50%;
+    max-height: auto;
 
     @include pad {
-      width: 50%;
+      max-width: 100%;
+      margin-top: 1.5rem;
     }
 
     @include mobile {
-      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 
   &__card {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: justify;
-    flex-direction: column;
     width: 100%;
     height: auto;
   }
   &__img {
     width: 100%;
+    &--sm {
+      display: none;
+    }
+    @include mobile {
+      display: none;
+      &--sm {
+        display: flex;
+        width: 100%;
+        max-height: 100%;
+      }
+    }
   }
   &__text {
     width: 100%;
     height: auto;
     background-color: #fff;
-
     font-size: 3rem;
     font-family: sans-serif;
     font-weight: bold;
     font-style: italic;
     color: $primary;
     text-align: center;
-
     word-wrap: break-word;
-    @include pad {
-      margin-top: 0.5rem;
+  }
+}
+
+.section-reco {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    @include container;
+  }
+  &__caption {
+    font-size: 3rem;
+    color: $text;
+    font-weight: bold;
+    @include mobile {
+      font-size: 1.5rem;
     }
+  }
+  &__cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 1.5rem;
+    gap: 1.5rem;
+    @include pad {
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    @include mobile {
+      height: 100%;
+    }
+  }
+  &__card-frame {
+    max-width: 25%;
+    max-height: auto;
+
+    @include pad {
+      max-width: 50%;
+      margin-top: 1.5rem;
+      padding: 0 0.5rem;
+    }
+    @include mobile {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    width: 100%;
+    height: 100%;
+    box-shadow: 1px 1px 15px #555555;
+  }
+  &__card-img {
+    width: 100%;
+    height: 60%;
+  }
+  &__card-caption {
+    width: 100%;
+    height: 5%;
+    font-size: 1rem;
+    color: #000;
+    text-align: start;
+    font-weight: bold;
+    padding: 0 1rem;
+    margin-top: 1rem;
+  }
+  &__card-text {
+    width: 100%;
+    height: 165px;
+    background-color: #fff;
+    font-size: 1rem;
+    font-family: sans-serif;
+
+    color: #000;
+    text-align: start;
+    padding: 0 1rem;
+    word-wrap: break-word;
+
+    @include mobile {
+      height: 165px;
+    }
+  }
+  &__card-date {
+    width: 100%;
+    height: 5%;
+    font-size: 0.875rem;
+    color: #707070;
+    padding: 0 1rem;
+    text-align: start;
   }
 }

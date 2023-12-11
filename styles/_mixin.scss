@@ -20,6 +20,8 @@
   align-items: center;
   flex-direction: column;
   width: 69.1%;
+  height: auto;
+  max-height: 100%;
   margin: 5rem 0;
 
   @include pad {
@@ -29,6 +31,6 @@
   @include mobile {
     flex-direction: column;
     width: 95%;
-    height: 100%;
+    margin: 2.5rem;
   }
 }
